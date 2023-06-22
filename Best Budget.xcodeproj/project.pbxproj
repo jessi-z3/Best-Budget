@@ -16,6 +16,12 @@
 		CC4ADA8E2A41068100017F88 /* Best_BudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA8D2A41068100017F88 /* Best_BudgetTests.swift */; };
 		CC4ADA982A41068200017F88 /* Best_BudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA972A41068200017F88 /* Best_BudgetUITests.swift */; };
 		CC4ADA9A2A41068200017F88 /* Best_BudgetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA992A41068200017F88 /* Best_BudgetUITestsLaunchTests.swift */; };
+		CC4ADAAB2A4109A200017F88 /* BillEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADAAA2A4109A200017F88 /* BillEditView.swift */; };
+		CC65F3C42A4298F300E8A21D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC65F3C32A4298F300E8A21D /* MainView.swift */; };
+		CC721A0E2A436DB30037A1C8 /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC721A0D2A436DB30037A1C8 /* Overview.swift */; };
+		CCB4CDC22A4226370044005D /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4CDC12A4226370044005D /* Frequency.swift */; };
+		CCEF31FA2A44997400C8C44D /* Bill+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */; };
+		CCEF32012A449A4A00C8C44D /* Bill+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,12 @@
 		CC4ADA932A41068200017F88 /* Best BudgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Best BudgetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4ADA972A41068200017F88 /* Best_BudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_BudgetUITests.swift; sourceTree = "<group>"; };
 		CC4ADA992A41068200017F88 /* Best_BudgetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_BudgetUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CC4ADAAA2A4109A200017F88 /* BillEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillEditView.swift; sourceTree = "<group>"; };
+		CC65F3C32A4298F300E8A21D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		CC721A0D2A436DB30037A1C8 /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
+		CCB4CDC12A4226370044005D /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
+		CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bill+CoreDataClass.swift"; path = "Best Budget/Bill+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bill+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,9 @@
 		CC4ADA6B2A41067F00017F88 = {
 			isa = PBXGroup;
 			children = (
+				CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */,
+				CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */,
+				CC65F3C32A4298F300E8A21D /* MainView.swift */,
 				CC4ADA762A41068000017F88 /* Best Budget */,
 				CC4ADA8C2A41068100017F88 /* Best BudgetTests */,
 				CC4ADA962A41068200017F88 /* Best BudgetUITests */,
@@ -104,6 +119,9 @@
 				CC4ADA802A41068100017F88 /* Persistence.swift */,
 				CC4ADA822A41068100017F88 /* Best_Budget.xcdatamodeld */,
 				CC4ADA7D2A41068100017F88 /* Preview Content */,
+				CC4ADAAA2A4109A200017F88 /* BillEditView.swift */,
+				CCB4CDC12A4226370044005D /* Frequency.swift */,
+				CC721A0D2A436DB30037A1C8 /* Overview.swift */,
 			);
 			path = "Best Budget";
 			sourceTree = "<group>";
@@ -197,7 +215,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					CC4ADA732A41068000017F88 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -263,8 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC721A0E2A436DB30037A1C8 /* Overview.swift in Sources */,
+				CC65F3C42A4298F300E8A21D /* MainView.swift in Sources */,
 				CC4ADA842A41068100017F88 /* Best_Budget.xcdatamodeld in Sources */,
 				CC4ADA812A41068100017F88 /* Persistence.swift in Sources */,
+				CCB4CDC22A4226370044005D /* Frequency.swift in Sources */,
+				CCEF32012A449A4A00C8C44D /* Bill+CoreDataProperties.swift in Sources */,
+				CC4ADAAB2A4109A200017F88 /* BillEditView.swift in Sources */,
+				CCEF31FA2A44997400C8C44D /* Bill+CoreDataClass.swift in Sources */,
 				CC4ADA7A2A41068000017F88 /* ContentView.swift in Sources */,
 				CC4ADA782A41068000017F88 /* Best_BudgetApp.swift in Sources */,
 			);
@@ -339,6 +363,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -353,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -399,6 +424,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -407,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -428,11 +454,14 @@
 				DEVELOPMENT_TEAM = AG7M436GF7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Best Budget";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +469,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "YellowBird.Best-Budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -457,11 +490,14 @@
 				DEVELOPMENT_TEAM = AG7M436GF7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Best Budget";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +505,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "YellowBird.Best-Budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

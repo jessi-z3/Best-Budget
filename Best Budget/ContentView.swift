@@ -12,55 +12,64 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Bill.nextDueDate, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var bills: FetchedResults<Bill>
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+        ScrollView{
+            NavigationView {
+                List {
+                    ForEach(bills) { bill in
+                        NavigationLink {
+                            BillEditView(bill: bill)
+                        } label: {
+                            HStack{
+                                Text(bill.company)
+                                Spacer()
+                                Text(bill.nextDueDate, formatter: itemFormatter)
+                            }.foregroundStyle(Color("Color2"))
+                        }
                     }
+                    .onDelete(perform: deleteItems)
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading){
+                            Text("Bills").font(.largeTitle).fontWeight(.bold).foregroundStyle(Color("Color2"))
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            EditButton().foregroundStyle(Color("Color2"))
+                        }
+                        ToolbarItem {
+                            Button(action: addItem) {
+                                Label("Add Bill", systemImage: "plus")
+                            }
+                        }
+                    }.listStyle(.plain)
+                
+            }.fontWidth(.expanded).accentColor(Color("Color2")).padding()
+        }.background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
     }
-
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
+            let newBill = Bill(context: viewContext)
+            newBill.nextDueDate = Date()
+            newBill.amount = 1550.65
+            newBill.category = "Home"
+            newBill.frequency = Frequency.monthly.rawValue
+            newBill.company = "Mortgage Bank"
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                print("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { bills[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -76,8 +85,9 @@ struct ContentView: View {
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
+    formatter.dateStyle = .long
+    formatter.locale = Locale(identifier: "en_US")
+    formatter.setLocalizedDateFormatFromTemplate("MMMMd")
     return formatter
 }()
 
