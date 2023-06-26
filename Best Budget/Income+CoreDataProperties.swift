@@ -16,8 +16,8 @@ extension Income {
         return NSFetchRequest<Income>(entityName: "Income")
     }
 
-    @NSManaged public var nextPayDate: Date?
-    @NSManaged public var payFrequency: String?
+    @NSManaged public var nextPayDate: Date
+    @NSManaged public var payFrequency: String
     @NSManaged public var balance: Double
     @NSManaged public var outstanding: Double
 

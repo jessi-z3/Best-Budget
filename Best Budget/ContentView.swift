@@ -17,7 +17,6 @@ struct ContentView: View {
     private var bills: FetchedResults<Bill>
 
     var body: some View {
-        ScrollView{
             NavigationView {
                 List {
                     ForEach(bills) { bill in
@@ -45,19 +44,20 @@ struct ContentView: View {
                                 Label("Add Bill", systemImage: "plus")
                             }
                         }
-                    }.listStyle(.plain)
+                    }
+                    .listStyle(.inset)
                 
-            }.fontWidth(.expanded).accentColor(Color("Color2")).padding()
-        }.background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
+            }.fontWidth(.expanded).accentColor(Color("Color2")).padding().frame( alignment: .center)
+        .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
     }
     private func addItem() {
         withAnimation {
             let newBill = Bill(context: viewContext)
             newBill.nextDueDate = Date()
-            newBill.amount = 1550.65
-            newBill.category = "Home"
+            newBill.amount = 0.00
+            newBill.category = "Category"
             newBill.frequency = Frequency.monthly.rawValue
-            newBill.company = "Mortgage Bank"
+            newBill.company = "Company Name"
             do {
                 try viewContext.save()
             } catch {

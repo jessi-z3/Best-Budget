@@ -13,7 +13,7 @@ struct Best_BudgetApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            Setup()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -7,4 +7,10 @@
         <attribute name="frequency" attributeType="String"/>
         <attribute name="nextDueDate" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="Income" representedClassName="Income" syncable="YES">
+        <attribute name="balance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="nextPayDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="outstanding" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="payFrequency" attributeType="String" defaultValueString="weekly"/>
+    </entity>
 </model>

@@ -28,3 +28,14 @@ func getNextDueDate(frequency: Frequency, bill: Bill) -> Date {
         case .weekly: bill.nextDueDate += (7 * 86400); return bill.nextDueDate;
     }
 }
+func getNextPayDate(frequency: Frequency, income: Income) -> Date {
+    
+    switch frequency {
+        case .annually: income.nextPayDate += (365 * 86400); return income.nextPayDate;
+        case .quarterly: income.nextPayDate += (89 * 86400); return income.nextPayDate;
+        case .monthly: income.nextPayDate += (30 * 86400); return income.nextPayDate;
+        case .everyFourWeeks: income.nextPayDate += (28 * 86400); return income.nextPayDate;
+        case .biWeekly: income.nextPayDate += (14 * 86400); return income.nextPayDate;
+        case .weekly: income.nextPayDate += (7 * 86400); return income.nextPayDate;
+    }
+}

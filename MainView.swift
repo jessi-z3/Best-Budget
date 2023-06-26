@@ -14,20 +14,20 @@ struct MainView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Bill.nextDueDate, ascending: true)],
         animation: .default)
     private var bills: FetchedResults<Bill>
-    
+
+    @State var income: Income
+
     var body: some View {
         TabView{
             Group{
-                Overview()
+                Overview(income: $income)
                     .tabItem{ Label("Overview", systemImage: "banknote")}
                 ContentView()
                     .tabItem { Label("Bills", systemImage: "list.dash")}
-            }.toolbar(.visible, for: .tabBar).toolbarBackground(Color("Color2"), for: .tabBar)
+            }
+            .toolbar(.visible, for: .tabBar).toolbarBackground(Color("Color2"), for: .tabBar)
+
         }
     }
 }
 
-#Preview {
-    MainView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}

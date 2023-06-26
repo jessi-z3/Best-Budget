@@ -20,7 +20,13 @@ struct PersistenceController {
             newBill.category = "Home"
             newBill.frequency = Frequency.monthly.rawValue
             newBill.company = "Mortgage Bank"
+            
         }
+        let newIncome = Income(context: viewContext)
+        newIncome.balance = 0.00
+        newIncome.nextPayDate = Date()
+        newIncome.outstanding = 0.00
+        newIncome.payFrequency = Frequency.biWeekly.rawValue
         do {
             try viewContext.save()
         } catch {

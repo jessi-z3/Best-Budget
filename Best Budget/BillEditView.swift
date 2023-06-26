@@ -14,7 +14,7 @@ struct BillEditView: View {
     @State var company = ""
     @State var category = ""
     @State var date = Date()
-    @State var amount = 1550.65
+    @State var amount = 0.00
     @State var frequency: Frequency = .monthly
     @State var saved: Bool = false
 
@@ -26,7 +26,7 @@ struct BillEditView: View {
             HStack{
                 Text("Amount:").font(.title3)
                 Spacer()
-                TextField("$" + String(format: "$%.2f", bill.amount), value: $amount, formatter: formatter).foregroundStyle(Color("Color2")).keyboardType(.decimalPad).textFieldStyle(.roundedBorder).frame(width: 150)
+                TextField("$" + String(format: "$%.2f", bill.amount), value: $amount, formatter: formatter).foregroundStyle(Color("Color2"))                     .textContentType(.oneTimeCode).textFieldStyle(.roundedBorder).frame(width: 150)
             }
             HStack{
                 Text("Frequency:").font(.title3)
@@ -45,9 +45,9 @@ struct BillEditView: View {
                 Text("Mark as Paid")
                     .foregroundColor(.red).frame(maxWidth: .infinity, alignment: .center)
             }
-        
-            }.padding()
-            .fontWidth(.expanded).foregroundStyle(Color("Color2"))
+        }
+        .padding()
+        .fontWidth(.expanded).foregroundStyle(Color("Color2"))
 
         .onAppear{
             company = bill.company
