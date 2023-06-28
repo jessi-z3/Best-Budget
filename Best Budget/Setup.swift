@@ -37,11 +37,12 @@ struct SheetView: View {
                     HStack{
                         Text("How often do you get paid?")
                         Spacer()
-                        Picker("Frequency", selection: $frequency){
-                            ForEach(Frequency.allCases){ freq in
-                                Text(freq.rawValue.capitalized)
-                            }.font(.title3)
-                        }
+                        Picker("Frequency", selection: $frequency, content: {
+                            ForEach(Frequency.allCases, content: { freq in
+                                Text(String(describing: freq))
+                            })
+                            .font(.title3)
+                        })
                     }
                     HStack{
                         Text("What's your current balance?")

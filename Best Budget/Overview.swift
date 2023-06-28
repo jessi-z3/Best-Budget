@@ -24,8 +24,10 @@ struct Overview: View {
     @FocusState private var focusedField: Field?
     
     @State var saved: Bool = false
+    @State var date = Date()
 
     @Binding var income: Income
+    @State var frequency : Frequency = .biWeekly
 
     var body: some View {
         ScrollView{
@@ -55,8 +57,8 @@ struct Overview: View {
                     HStack{
                         Text("Pay Date:").fontWeight(.bold).font(.title2).foregroundStyle(Color.white)
                         Spacer()
-                        DatePicker("", selection: $income.nextPayDate, displayedComponents: [.date]).colorScheme(.dark)
-                            .onChange(of: income.nextPayDate) {
+                        DatePicker("", selection: $date, displayedComponents: [.date]).colorScheme(.dark)
+                            .onChange(of: date) {
                                 projected = income.balance
                                 projected -= income.outstanding
                                 bills.forEach{ bill in
@@ -68,18 +70,16 @@ struct Overview: View {
                         }
                 HStack(alignment: .center){
                     Text("Paid: ").foregroundStyle(Color.white)
-                    Picker("Frequency", selection: $income.payFrequency){
-                        ForEach(Frequency.allCases){ freq in
-                            Text(freq.rawValue.capitalized)
-                        }
+                    Picker("Frequency", selection: $frequency, content: {
+                        ForEach(Frequency.allCases, content: { freq in
+                            Text(String(String(describing: freq)))
+                        })
                         .font(.title3)
-                    }
-                    .onAppear{
-                        print(income.payFrequency)
-                    }
+                    })
                     Spacer()
                     Button{
-                        income.nextPayDate = getNextPayDate(frequency: Frequency(rawValue: income.payFrequency)!, income: income)
+                        income.nextPayDate = getNextPayDate(frequency: frequency, income: income)
+                        date = income.nextPayDate
                     }label: {
                         Text("Next Pay Date").foregroundStyle(Color("Color1"))
                     }
@@ -145,17 +145,14 @@ struct Overview: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
                 .onAppear{
-//                    income.balance = available
-//                    income.nextPayDate = payDate
-//                    income.payFrequency = frequency.rawValue
-//                    income.outstanding = outstanding
+                    frequency = Frequency(rawValue: income.payFrequency)!
                     projected = income.balance
                     bills.forEach{ bill in
                         if bill.nextDueDate <= income.nextPayDate{
                             projected -= bill.amount
                         }
                     }
-                    print(income)
+                    projected -= income.outstanding
                 }
         }
         .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))

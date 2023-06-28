@@ -22,11 +22,11 @@ struct BillEditView: View {
             VStack(alignment: .leading){
                 TextField(bill.company, text: $company).font(.largeTitle)
                 TextField(bill.category, text: $category).font(.title)
-                DatePicker("Due Date:", selection: $date, displayedComponents: .date).font(.title2)
+                DatePicker("Due Date:", selection: $date, displayedComponents: .date).font(.title2).colorScheme(.dark)
             HStack{
                 Text("Amount:").font(.title3)
                 Spacer()
-                TextField("$" + String(format: "$%.2f", bill.amount), value: $amount, formatter: formatter).foregroundStyle(Color("Color2"))                     .textContentType(.oneTimeCode).textFieldStyle(.roundedBorder).frame(width: 150)
+                TextField(String(format: "$%.2f", bill.amount), value: $amount, formatter: formatter).foregroundStyle(Color("Color2"))                     .textContentType(.oneTimeCode).textFieldStyle(.roundedBorder).frame(width: 150)
             }
             HStack{
                 Text("Frequency:").font(.title3)
@@ -47,7 +47,7 @@ struct BillEditView: View {
             }
         }
         .padding()
-        .fontWidth(.expanded).foregroundStyle(Color("Color2"))
+        .fontWidth(.expanded).foregroundStyle(Color.white)
 
         .onAppear{
             company = bill.company
@@ -80,6 +80,7 @@ struct BillEditView: View {
                 }
             }
         }
+        .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
     }
 }
 

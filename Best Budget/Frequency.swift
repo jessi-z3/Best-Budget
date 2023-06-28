@@ -7,15 +7,26 @@
 
 import Foundation
 
-public enum Frequency: String, CaseIterable, Identifiable {
-    public var id: Self { self }
+public enum Frequency: String, CaseIterable, Identifiable, CustomStringConvertible {
+    public var id: Frequency { self }
 
-    case annually = "annually"
-    case quarterly = "quarterly"
-    case monthly = "monthly"
-    case everyFourWeeks = "every four weeks"
-    case biWeekly = "bi-weekly"
-    case weekly = "weekly"
+    case annually
+    case quarterly
+    case monthly
+    case everyFourWeeks
+    case biWeekly
+    case weekly
+    
+    public var description: String{
+        switch self {
+            case .annually: return "annually"
+            case .quarterly: return "quarterly"
+            case .monthly: return "monthly"
+            case .everyFourWeeks: return "every four weeks"
+            case .biWeekly: return "bi-weekly"
+            case .weekly: return "weekly"
+        }
+    }
 }
 func getNextDueDate(frequency: Frequency, bill: Bill) -> Date {
     
