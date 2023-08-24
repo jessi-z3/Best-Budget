@@ -30,6 +30,7 @@ struct SheetView: View {
                         Button(action: createIncome) {
                             Label("", systemImage: "plus").font(.title2).fontWeight(.bold).foregroundStyle(Color.white)
                         }
+                        .padding(7)
                     }
                     List{
                         ForEach(incomes){ income in
@@ -38,9 +39,9 @@ struct SheetView: View {
                             }label: {
                                 HStack{
                                     Text(income.incomeName)
-                                }                            .foregroundStyle(Color("Color2"))
+                                }
 
-                            }
+                            }.foregroundStyle(Color("Color2"))
                         }.onDelete(perform: deleteIncome)
                     }
                     .scrollContentBackground(.hidden)
