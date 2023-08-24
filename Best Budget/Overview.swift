@@ -76,14 +76,11 @@ struct Overview: View {
                 .onAppear{
                     incomes.forEach{ income in
                         projected += income.balance
-                        print(projected)
                         projected -= income.outstanding
-                        print(projected)
                     }
                     bills.forEach{ bill in
                         if bill.nextDueDate < incomes[0].nextPayDate{
                             projected -= bill.amount
-                            print(projected)
                         }
                     }
                 }

@@ -14,7 +14,7 @@ struct IncomeEditView: View {
     @State private var available: Double = 0.00
     @State private var payDate: Date = Date().startOfHour()
     @State private var outstanding: Double = 0.00
-    @State var frequency: String = Frequency.weekly.description
+    @State var frequency: Frequency = Frequency.weekly
     @State var saved: Bool = false
 
     var income: Income
@@ -45,7 +45,7 @@ struct IncomeEditView: View {
                         
                     }
                     .onSubmit {
-                        income.payFrequency = frequency
+                        income.payFrequency = frequency.description
                     }
                     
                 }
@@ -62,10 +62,20 @@ struct IncomeEditView: View {
                     TextField(String(format: "$%.2f", outstanding), value: $outstanding, formatter: formatter).foregroundStyle(Color("Color2")) .textContentType(.oneTimeCode).textFieldStyle(.roundedBorder).frame(width: 100)
                 }
                 Spacer()
+                Button{
+                    income.nextPayDate = getNextPayDate(frequency: frequency, income: income)
+                    payDate = income.nextPayDate
+                }label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 25).frame(width: 200, height: 50, alignment: .center)
+                        Text("I Got Paid")
+                            .foregroundColor(.red).frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
                 .onAppear{
                     payDate = income.nextPayDate.startOfHour()
                     available = income.balance
-                    frequency = income.payFrequency
+                    frequency = Frequency(rawValue: income.payFrequency) ?? .weekly
                     outstanding = income.outstanding
                     incomeName = income.incomeName
                 }
@@ -75,7 +85,7 @@ struct IncomeEditView: View {
                             do{
                                 income.nextPayDate = payDate.startOfHour()
                                 income.balance = available
-                                income.payFrequency = frequency
+                                income.payFrequency = frequency.description
                                 income.outstanding = outstanding
                                 income.incomeName = incomeName
                                 try viewContext.save()
