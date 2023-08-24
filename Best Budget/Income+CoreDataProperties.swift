@@ -20,6 +20,7 @@ extension Income {
     @NSManaged public var payFrequency: String
     @NSManaged public var balance: Double
     @NSManaged public var outstanding: Double
+    @NSManaged public var incomeName: String
 
 }
 

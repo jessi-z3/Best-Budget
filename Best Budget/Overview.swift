@@ -8,116 +8,54 @@
 import SwiftUI
 
 struct Overview: View {
-    enum Field {
-        case balance
-        case outstanding
-    }
+
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Bill.nextDueDate, ascending: true)],
         animation: .default)
     var bills: FetchedResults<Bill>
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Income.nextPayDate, ascending: true)],
+        animation: .default)
+    private var incomes: FetchedResults<Income>
 
     @State var projected: Double = 0.00
-    
-    @FocusState private var focusedField: Field?
-    
-    @State var saved: Bool = false
-    @State var date = Date()
-
-    @Binding var income: Income
-    @State var frequency : Frequency = .biWeekly
 
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading, spacing: 20){
-                
-                Text("Overview").font(.largeTitle).fontWeight(.bold).foregroundStyle(Color.white)
-                Spacer()
-                HStack{
-                    Text("Balance:").fontWeight(.bold).font(.title2).foregroundStyle(Color.white)
-                    Spacer()
-                    TextField(String(format: "$%.2f", income.balance), value: $income.balance, formatter: formatter)
-                        .focused($focusedField, equals: .balance)
-                        .textFieldStyle(.roundedBorder)
-                        .textContentType(.oneTimeCode)
-                        .frame(maxWidth: 150).font(.title3)
-                        .foregroundStyle(Color("Color2"))
-                        .onSubmit {
-                            projected = income.balance
-                            projected -= income.outstanding
-                            bills.forEach{ bill in
-                                if bill.nextDueDate <= income.nextPayDate{
-                                    projected -= bill.amount
-                                }
-                            }
-                        }
+        NavigationStack{
+            ScrollView{
+                VStack(alignment: .leading, spacing: 15){
+                    Text("Overview").font(.largeTitle).fontWeight(.bold).foregroundStyle(Color.white)
+                    
+                    ForEach(incomes){ income in
+                        BillsThisPeriod(bills: bills, income: income)
                     }
+                    Spacer()
                     HStack{
-                        Text("Pay Date:").fontWeight(.bold).font(.title2).foregroundStyle(Color.white)
+                        Text("Bills this period:")
+                            .fontWeight(.bold)
+                            .font(.title2)
+                            .foregroundStyle(Color.white)
                         Spacer()
-                        DatePicker("", selection: $date, displayedComponents: [.date]).colorScheme(.dark)
-                            .onChange(of: date) {
-                                projected = income.balance
-                                projected -= income.outstanding
-                                bills.forEach{ bill in
-                                    if bill.nextDueDate <= income.nextPayDate{
-                                        projected -= bill.amount
-                                    }
-                                }
-                            }
-                        }
-                HStack(alignment: .center){
-                    Text("Paid: ").foregroundStyle(Color.white)
-                    Picker("Frequency", selection: $frequency, content: {
-                        ForEach(Frequency.allCases, content: { freq in
-                            Text(String(String(describing: freq)))
-                        })
-                        .font(.title3)
-                    })
-                    Spacer()
-                    Button{
-                        income.nextPayDate = getNextPayDate(frequency: frequency, income: income)
-                        date = income.nextPayDate
-                    }label: {
-                        Text("Next Pay Date").foregroundStyle(Color("Color1"))
                     }
-                }
-                .padding()
-                Text("Bills this period:")
-                    .fontWeight(.bold)
-                    .font(.title2)
-                    .foregroundStyle(Color.white)
-                ForEach(bills){ bill in
-                    HStack{
-                        if bill.nextDueDate <= income.nextPayDate{
-                            Text(bill.company)
-                                .foregroundStyle(Color.white)
-                            Spacer()
-                            Text(String(format: "$%.2f", bill.amount))
-                                .foregroundStyle(Color.white)
+                    ForEach(bills){ bill in
+                        if bill.nextDueDate < incomes[0].nextPayDate{
+                            HStack{
+                                Text(bill.company)
+                                    .foregroundStyle(Color.white)
+                                Spacer()
+                                Text(String(format: "$%.2f", bill.amount))
+                                    .foregroundStyle(Color.white)
+                            }
+        
                         }
                     }
-                }
-                HStack{
-                    Text("Outstanding:").fontWeight(.bold).font(.title2).foregroundStyle(Color.white)
-                    Spacer()
-                    TextField(String(format: "$%.2f", income.outstanding), value: $income.outstanding, formatter: formatter)
-                        .focused($focusedField, equals: .outstanding)
-                        .textContentType(.oneTimeCode)
-                        .foregroundStyle(Color("Color2"))
-                        .textFieldStyle(.roundedBorder)
-                        .frame(maxWidth: 150)
-                        .font(.title3)
-                        .onSubmit {
-                            projected = income.balance
-                            projected -= income.outstanding
-                            bills.forEach{ bill in
-                                if bill.nextDueDate <= income.nextPayDate{
-                                    projected -= bill.amount
-                                }
-                            }
+                    if ( bills.isEmpty) {
+                        HStack{
+                            Text("No Bills Added").fontWeight(.bold)
+                                .font(.title2)
+                                .foregroundStyle(Color.white)
                         }
                     }
                     HStack{
@@ -128,34 +66,35 @@ struct Overview: View {
                         Spacer()
                         Text(String(format: "$%.2f", projected))
                             .font(.title2)
-                            .foregroundStyle(Color("Color2"))
-                    }
-                }
-                .onSubmit {
-                    switch focusedField {
-                    case .balance:
-                        focusedField = .balance;
-                    case .outstanding:
-                        focusedField = .outstanding;
-                    default:
-                        print("fields completed")
+                            .fontWeight(.heavy)
+                            .foregroundStyle(projected < 0.00 ? Color.red : Color.green)
                     }
                 }
                 .fontWidth(.expanded)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .padding(5)
                 .onAppear{
-                    frequency = Frequency(rawValue: income.payFrequency)!
-                    projected = income.balance
+                    incomes.forEach{ income in
+                        projected += income.balance
+                        print(projected)
+                        projected -= income.outstanding
+                        print(projected)
+                    }
                     bills.forEach{ bill in
-                        if bill.nextDueDate <= income.nextPayDate{
+                        if bill.nextDueDate < incomes[0].nextPayDate{
                             projected -= bill.amount
+                            print(projected)
                         }
                     }
-                    projected -= income.outstanding
                 }
+                .onDisappear{
+                    projected = 0.00
+                }
+            }
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
         }
-        .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
+        
     }
 }
 private let formatter: NumberFormatter = {
@@ -168,5 +107,11 @@ private let formatter: NumberFormatter = {
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
+    formatter.timeStyle = .none
     return formatter
 }()
+struct Overview_Previews: PreviewProvider {
+    static var previews: some View {
+        Overview().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}

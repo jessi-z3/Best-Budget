@@ -17,7 +17,20 @@ struct ContentView: View {
     private var bills: FetchedResults<Bill>
 
     var body: some View {
-            NavigationView {
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 15){
+                HStack{
+                    Text("Bills").font(.largeTitle).fontWeight(.bold).foregroundStyle(Color.white)
+                        .padding(15)
+
+                    Spacer()
+                    EditButton().font(.title2).fontWeight(.bold).foregroundStyle(Color.white)
+                    Button(action: addItem) {
+                        Label("", systemImage: "plus").font(.title2).fontWeight(.bold).foregroundStyle(Color.white)
+                    }
+                    .padding(7)
+                }
+                
                 List {
                     ForEach(bills) { bill in
                         NavigationLink {
@@ -27,33 +40,26 @@ struct ContentView: View {
                                 Text(bill.company)
                                 Spacer()
                                 Text(bill.nextDueDate, formatter: itemFormatter)
-                            }.foregroundStyle(Color("Color2"))
+                            }
+                            .foregroundStyle(Color("Color2"))
                         }
                     }
                     .onDelete(perform: deleteItems)
+                    
                 }
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading){
-                            Text("Bills").font(.largeTitle).fontWeight(.bold).foregroundStyle(Color("Color2"))
-                        }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            EditButton().foregroundStyle(Color("Color2"))
-                        }
-                        ToolbarItem {
-                            Button(action: addItem) {
-                                Label("Add Bill", systemImage: "plus")
-                            }
-                        }
-                    }
-                    .listStyle(.inset)
-                
-            }.fontWidth(.expanded).accentColor(Color("Color2")).padding().frame( alignment: .center)
-        .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
+                .scrollContentBackground(.hidden)
+                                
+            }
+            .fontWidth(.expanded).frame( alignment: .center)
+            .padding(10)
+            .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
+        }
+        
     }
     private func addItem() {
         withAnimation {
             let newBill = Bill(context: viewContext)
-            newBill.nextDueDate = Date()
+            newBill.nextDueDate = Date().startOfHour() 
             newBill.amount = 0.00
             newBill.category = "Category"
             newBill.frequency = Frequency.monthly.rawValue
@@ -86,11 +92,27 @@ struct ContentView: View {
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .long
+    formatter.timeStyle = .none
     formatter.locale = Locale(identifier: "en_US")
     formatter.setLocalizedDateFormatFromTemplate("MMMMd")
     return formatter
 }()
+extension Date {
 
+    func startOfHour() -> Date
+    {
+        let calendar = Calendar.current
+
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+
+        return calendar.date(from: components) ?? Date()
+    }
+
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)

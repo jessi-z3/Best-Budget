@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC109DFE2A8EBBF800F44F51 /* IncomeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC109DFD2A8EBBF800F44F51 /* IncomeEditView.swift */; };
+		CC109E002A8ED0CE00F44F51 /* BillsThisPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC109DFF2A8ED0CE00F44F51 /* BillsThisPeriod.swift */; };
 		CC1F8A222A44EB050097F921 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F8A212A44EB050097F921 /* Setup.swift */; };
 		CC3B0E942A44CA56008BF223 /* Income+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3B0E922A44CA56008BF223 /* Income+CoreDataClass.swift */; };
 		CC3B0E952A44CA56008BF223 /* Income+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3B0E932A44CA56008BF223 /* Income+CoreDataProperties.swift */; };
@@ -22,6 +24,7 @@
 		CC4ADAAB2A4109A200017F88 /* BillEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADAAA2A4109A200017F88 /* BillEditView.swift */; };
 		CC65F3C42A4298F300E8A21D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC65F3C32A4298F300E8A21D /* MainView.swift */; };
 		CC721A0E2A436DB30037A1C8 /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC721A0D2A436DB30037A1C8 /* Overview.swift */; };
+		CC9EDDCC2A50EFC9000CBBED /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9EDDCB2A50EFC9000CBBED /* Launch Screen.storyboard */; };
 		CCB4CDC22A4226370044005D /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4CDC12A4226370044005D /* Frequency.swift */; };
 		CCEF31FA2A44997400C8C44D /* Bill+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */; };
 		CCEF32012A449A4A00C8C44D /* Bill+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */; };
@@ -45,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC109DFD2A8EBBF800F44F51 /* IncomeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeEditView.swift; sourceTree = "<group>"; };
+		CC109DFF2A8ED0CE00F44F51 /* BillsThisPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsThisPeriod.swift; sourceTree = "<group>"; };
 		CC1F8A212A44EB050097F921 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		CC3B0E922A44CA56008BF223 /* Income+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Income+CoreDataClass.swift"; path = "Best Budget/Income+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CC3B0E932A44CA56008BF223 /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Income+CoreDataProperties.swift"; path = "Best Budget/Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		CC4ADAAA2A4109A200017F88 /* BillEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillEditView.swift; sourceTree = "<group>"; };
 		CC65F3C32A4298F300E8A21D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CC721A0D2A436DB30037A1C8 /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
+		CC9EDDCB2A50EFC9000CBBED /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Best Budget/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CCB4CDC12A4226370044005D /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bill+CoreDataClass.swift"; path = "Best Budget/Bill+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bill+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 		CC4ADA6B2A41067F00017F88 = {
 			isa = PBXGroup;
 			children = (
+				CC9EDDCB2A50EFC9000CBBED /* Launch Screen.storyboard */,
 				CC3B0E922A44CA56008BF223 /* Income+CoreDataClass.swift */,
 				CC3B0E932A44CA56008BF223 /* Income+CoreDataProperties.swift */,
 				CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */,
@@ -124,6 +131,7 @@
 				CC4ADA772A41068000017F88 /* Best_BudgetApp.swift */,
 				CC4ADA792A41068000017F88 /* ContentView.swift */,
 				CC1F8A212A44EB050097F921 /* Setup.swift */,
+				CC109DFD2A8EBBF800F44F51 /* IncomeEditView.swift */,
 				CC4ADA7B2A41068100017F88 /* Assets.xcassets */,
 				CC4ADA802A41068100017F88 /* Persistence.swift */,
 				CC4ADA822A41068100017F88 /* Best_Budget.xcdatamodeld */,
@@ -131,6 +139,7 @@
 				CC4ADAAA2A4109A200017F88 /* BillEditView.swift */,
 				CCB4CDC12A4226370044005D /* Frequency.swift */,
 				CC721A0D2A436DB30037A1C8 /* Overview.swift */,
+				CC109DFF2A8ED0CE00F44F51 /* BillsThisPeriod.swift */,
 			);
 			path = "Best Budget";
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9EDDCC2A50EFC9000CBBED /* Launch Screen.storyboard in Resources */,
 				CC4ADA7F2A41068100017F88 /* Preview Assets.xcassets in Resources */,
 				CC4ADA7C2A41068100017F88 /* Assets.xcassets in Resources */,
 			);
@@ -293,6 +303,8 @@
 				CC3B0E952A44CA56008BF223 /* Income+CoreDataProperties.swift in Sources */,
 				CC721A0E2A436DB30037A1C8 /* Overview.swift in Sources */,
 				CC65F3C42A4298F300E8A21D /* MainView.swift in Sources */,
+				CC109DFE2A8EBBF800F44F51 /* IncomeEditView.swift in Sources */,
+				CC109E002A8ED0CE00F44F51 /* BillsThisPeriod.swift in Sources */,
 				CC4ADA842A41068100017F88 /* Best_Budget.xcdatamodeld in Sources */,
 				CC4ADA812A41068100017F88 /* Persistence.swift in Sources */,
 				CCB4CDC22A4226370044005D /* Frequency.swift in Sources */,

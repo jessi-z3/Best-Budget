@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22158.8" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22158.8" systemVersion="22G74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Bill" representedClassName="Bill" syncable="YES">
         <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="category" attributeType="String"/>
@@ -9,6 +9,7 @@
     </entity>
     <entity name="Income" representedClassName="Income" syncable="YES">
         <attribute name="balance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="incomeName" optional="YES" attributeType="String"/>
         <attribute name="nextPayDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="outstanding" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="payFrequency" attributeType="String" defaultValueString="weekly"/>

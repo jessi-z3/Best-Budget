@@ -19,31 +19,36 @@ struct BillEditView: View {
     @State var saved: Bool = false
 
     var body: some View {
+        NavigationStack{
             VStack(alignment: .leading){
                 TextField(bill.company, text: $company).font(.largeTitle)
                 TextField(bill.category, text: $category).font(.title)
-                DatePicker("Due Date:", selection: $date, displayedComponents: .date).font(.title2).colorScheme(.dark)
-            HStack{
-                Text("Amount:").font(.title3)
-                Spacer()
-                TextField(String(format: "$%.2f", bill.amount), value: $amount, formatter: formatter).foregroundStyle(Color("Color2"))                     .textContentType(.oneTimeCode).textFieldStyle(.roundedBorder).frame(width: 150)
-            }
-            HStack{
-                Text("Frequency:").font(.title3)
-                Spacer()
-                Picker("Frequency", selection: $frequency){
-                    ForEach(Frequency.allCases){ freq in
-                        Text(freq.rawValue.capitalized)
-                    }.font(.title3)
+                DatePicker("Due Date:", selection: $date, displayedComponents: .date).font(.title2).colorScheme(.dark).datePickerStyle(.automatic).accentColor(Color("Color2"))
+                HStack{
+                    Text("Amount:").font(.title3)
+                    Spacer()
+                    TextField(String(format: "$%.2f", bill.amount), value: $amount, formatter: formatter).foregroundStyle(Color("Color2"))                     .textContentType(.oneTimeCode).textFieldStyle(.roundedBorder).frame(width: 150)
                 }
-            }
-            Spacer()
-            Button{
-                bill.nextDueDate = getNextDueDate(frequency: frequency, bill: bill)
-                date = bill.nextDueDate
-            }label: {
-                Text("Mark as Paid")
-                    .foregroundColor(.red).frame(maxWidth: .infinity, alignment: .center)
+                HStack{
+                    Text("Frequency:").font(.title3)
+                    Spacer()
+                    Picker("Frequency", selection: $frequency){
+                        ForEach(Frequency.allCases){ freq in
+                            Text(freq.description).tag(freq.description)
+                        }.font(.title3)
+                    }
+                }
+                Spacer()
+                Button{
+                    bill.nextDueDate = getNextDueDate(frequency: frequency, bill: bill)
+                    date = bill.nextDueDate
+                }label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 25).frame(width: 200, height: 50, alignment: .center)
+                        Text("Mark as Paid")
+                            .foregroundColor(.red).frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
             }
         }
         .padding()

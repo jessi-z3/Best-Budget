@@ -15,18 +15,21 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newBill = Bill(context: viewContext)
-            newBill.nextDueDate = Date()
-            newBill.amount = 1550.65
-            newBill.category = "Home"
+            newBill.nextDueDate = Date().startOfHour()
+            newBill.amount = 0.00
+            newBill.category = "Category"
             newBill.frequency = Frequency.monthly.rawValue
-            newBill.company = "Mortgage Bank"
+            newBill.company = "Company Name"
             
         }
-        let newIncome = Income(context: viewContext)
-        newIncome.balance = 0.00
-        newIncome.nextPayDate = Date()
-        newIncome.outstanding = 0.00
-        newIncome.payFrequency = Frequency.biWeekly.rawValue
+        for _ in 0..<2 {
+            let newIncome = Income(context: viewContext)
+            newIncome.incomeName = "Income Name"
+            newIncome.balance = 100.00
+            newIncome.nextPayDate = Date().startOfHour()
+            newIncome.outstanding = 50.00
+            newIncome.payFrequency = Frequency.biWeekly.description
+        }
         do {
             try viewContext.save()
         } catch {
@@ -51,3 +54,4 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 }
+
