@@ -13,12 +13,6 @@ struct BillsThisPeriod: View {
     var bills: FetchedResults<Bill>
     var income: Income
     
-    @State private var incomeName: String = "Income Name"
-    @State var date = Date().startOfHour()
-    @State var balance: Double = 0.00
-    @State var outstanding: Double = 0.00
-    @State var frequency: String = Frequency.weekly.description
-    
     var body: some View {
         VStack{
             HStack{
@@ -33,7 +27,7 @@ struct BillsThisPeriod: View {
             }
             HStack{
                 Text("Paid: ").fontWeight(.bold).font(.title2)
-                Text(income.payFrequency.description)
+                Text(Frequency(rawValue: income.payFrequency)?.description ?? income.payFrequency)
                 Spacer()
                 Text(itemFormatter.string(from:income.nextPayDate))
             }

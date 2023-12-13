@@ -14,7 +14,7 @@ struct IncomeEditView: View {
     @State private var available: Double = 0.00
     @State private var payDate: Date = Date().startOfHour()
     @State private var outstanding: Double = 0.00
-    @State var frequency: Frequency = Frequency.weekly
+    @State var frequency: Frequency = .weekly
     @State var saved: Bool = false
 
     var income: Income
@@ -39,13 +39,12 @@ struct IncomeEditView: View {
                     Text("Pay Frequency: ")
                     Spacer()
                     Picker("Frequency", selection: $frequency){
-                        ForEach(Frequency.allCases, id: \.self.id) { freq in
+                        ForEach(Frequency.allCases){ freq in
                             Text(freq.description).tag(freq.description)
-                        }
-                        
+                        }.font(.title3)
                     }
                     .onSubmit {
-                        income.payFrequency = frequency.description
+                        frequency = Frequency(rawValue: income.payFrequency) ?? .monthly
                     }
                     
                 }
@@ -85,7 +84,7 @@ struct IncomeEditView: View {
                             do{
                                 income.nextPayDate = payDate.startOfHour()
                                 income.balance = available
-                                income.payFrequency = frequency.description
+                                income.payFrequency = frequency.rawValue
                                 income.outstanding = outstanding
                                 income.incomeName = incomeName
                                 try viewContext.save()

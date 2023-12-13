@@ -45,7 +45,14 @@ struct SheetView: View {
                         }.onDelete(perform: deleteIncome)
                     }
                     .scrollContentBackground(.hidden)
-
+                    Spacer()
+                    if(!setupComplete){
+                        Button("Done"){
+                            setupComplete = true
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .foregroundStyle(Color("Color2"))
+                    }
                 }
                 .fontWidth(.expanded)
                 .frame(alignment: .center)
