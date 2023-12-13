@@ -14,7 +14,8 @@ struct MainView: View {
         animation: .default)
     private var incomes: FetchedResults<Income>
     @State var setupComplete: Bool = false
-    
+    @Binding var projected: Double
+
     public func createIncome() -> Income {
         let newIncome = Income.init(context: viewContext)
         newIncome.balance = 0.00
@@ -28,13 +29,12 @@ struct MainView: View {
     }
     var body: some View {
         TabView{
-            Overview()
-                .tabItem{ Label("Overview", systemImage: "banknote")}               
-
-            ContentView()
+            Overview(projected: $projected)
+                .tabItem{ Label("Overview", systemImage: "banknote")}
+            ContentView(projected: $projected)
                 .tabItem { Label("Bills", systemImage: "list.dash")}
-            SheetView(setupComplete: $setupComplete)
-                .tabItem { Label("Settings", systemImage: "gearshape.fill")}
+            SheetView(setupComplete: $setupComplete, projected: $projected)
+                .tabItem { Label("Setup", systemImage: "gearshape.fill")}
 
         }
         .edgesIgnoringSafeArea(.vertical)
@@ -42,13 +42,14 @@ struct MainView: View {
             UITabBar.appearance().backgroundColor = UIColor(Color("Color2"))
             UITabBar.appearance().unselectedItemTintColor = UIColor(Color("Color1"))
             UITabBar.appearance().tintColor = UIColor(Color("Color2"))
-
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
+    @State static var projected: Double = 0.00
+
     static var previews: some View {
-        MainView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        MainView(projected: $projected).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

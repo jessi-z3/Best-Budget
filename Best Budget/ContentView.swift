@@ -15,7 +15,7 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Bill.nextDueDate, ascending: true)],
         animation: .default)
     private var bills: FetchedResults<Bill>
-
+    @Binding var projected : Double
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 15){
@@ -34,7 +34,7 @@ struct ContentView: View {
                 List {
                     ForEach(bills) { bill in
                         NavigationLink {
-                            BillEditView(bill: bill)
+                            BillEditView(bill: bill, projected: $projected)
                         } label: {
                             HStack{
                                 Text(bill.company)
@@ -114,7 +114,9 @@ extension Date {
 
 }
 struct ContentView_Previews: PreviewProvider {
+    @State static var projected: Double = 0.00
+
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView(projected: $projected).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

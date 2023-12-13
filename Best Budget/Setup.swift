@@ -11,9 +11,8 @@ import CoreData
 struct SheetView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Binding var setupComplete: Bool
+    @Binding var projected: Double
     @Environment(\.presentationMode) var presentationMode
-    var onDismiss: ((_ model: Bool) -> Void)?
-    var onDismiss2: ((_ model: Income) -> Void)?
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Income.nextPayDate, ascending: true)],
         animation: .default)
@@ -22,7 +21,7 @@ struct SheetView: View {
         NavigationStack{
                 VStack(alignment: .leading, spacing: 15){
                     HStack{
-                        Text("Settings").font(.largeTitle).fontWeight(.bold)
+                        Text("Incomes").font(.largeTitle).fontWeight(.bold)
                             .padding(15)
 
                         Spacer()
@@ -35,7 +34,7 @@ struct SheetView: View {
                     List{
                         ForEach(incomes){ income in
                             NavigationLink{
-                                IncomeEditView(income: income)
+                                IncomeEditView(setupComplete: $setupComplete, projected: $projected, income: income)
                             }label: {
                                 HStack{
                                     Text(income.incomeName)
@@ -44,15 +43,9 @@ struct SheetView: View {
                             }.foregroundStyle(Color("Color2"))
                         }.onDelete(perform: deleteIncome)
                     }
+                    
                     .scrollContentBackground(.hidden)
                     Spacer()
-                    if(!setupComplete){
-                        Button("Done"){
-                            setupComplete = true
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .foregroundStyle(Color("Color2"))
-                    }
                 }
                 .fontWidth(.expanded)
                 .frame(alignment: .center)
@@ -101,7 +94,8 @@ struct Setup: View {
     
     @State private var showingSheet = false
     @AppStorage("setupComplete") var setupComplete: Bool = false
-    
+    @AppStorage("projected") var projected: Double = 0.00
+
     var body: some View {
         NavigationStack{
             if (!setupComplete){
@@ -113,7 +107,7 @@ struct Setup: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .sheet(isPresented: $showingSheet) {
-                        SheetView(setupComplete: $setupComplete)
+                        SheetView(setupComplete: $setupComplete, projected: $projected)
                     }
                     Spacer()
                 }.padding()
@@ -121,7 +115,7 @@ struct Setup: View {
                     .fontWidth(.expanded).foregroundStyle(Color("Color2"))
                     .background(LinearGradient(gradient: Gradient(colors: [Color("Color2"), Color("Color1")]), startPoint: .leading, endPoint: .bottom))
             } else {
-                MainView()
+                MainView(projected: $projected)
             }
         }
     }

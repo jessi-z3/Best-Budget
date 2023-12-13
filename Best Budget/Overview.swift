@@ -19,8 +19,8 @@ struct Overview: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Income.nextPayDate, ascending: true)],
         animation: .default)
     private var incomes: FetchedResults<Income>
+    @Binding var projected: Double
 
-    @State var projected: Double = 0.00
 
     var body: some View {
         NavigationStack{
@@ -48,7 +48,6 @@ struct Overview: View {
                                 Text(String(format: "$%.2f", bill.amount))
                                     .foregroundStyle(Color.white)
                             }
-        
                         }
                     }
                     if ( bills.isEmpty) {
@@ -74,6 +73,7 @@ struct Overview: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(5)
                 .onAppear{
+                    projected = 0.00
                     incomes.forEach{ income in
                         projected += income.balance
                         projected -= income.outstanding
@@ -83,9 +83,6 @@ struct Overview: View {
                             projected -= bill.amount
                         }
                     }
-                }
-                .onDisappear{
-                    projected = 0.00
                 }
             }
             .padding()
@@ -108,7 +105,8 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 struct Overview_Previews: PreviewProvider {
+    @State static var projected: Double = 0.00
     static var previews: some View {
-        Overview().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        Overview(projected: $projected).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

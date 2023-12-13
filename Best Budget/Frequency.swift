@@ -10,6 +10,7 @@ import Foundation
 public enum Frequency: String, CaseIterable, Identifiable, CustomStringConvertible {
     public var id: Frequency { self }
 
+    case once
     case annually
     case quarterly
     case monthly
@@ -19,6 +20,7 @@ public enum Frequency: String, CaseIterable, Identifiable, CustomStringConvertib
     
     public var description: String{
         switch self {
+            case .once: return "one time"
             case .annually: return "annually"
             case .quarterly: return "quarterly"
             case .monthly: return "monthly"
@@ -32,6 +34,7 @@ func getNextDueDate(frequency: Frequency, bill: Bill) -> Date {
     var dateComponent = DateComponents()
 
     switch frequency {
+        case .once: dateComponent.year = 0; dateComponent.day = 0; dateComponent.month = 0; bill.nextDueDate = Calendar.current.date(byAdding: dateComponent, to: bill.nextDueDate)!; return bill.nextDueDate;
         case .annually: dateComponent.year = 1; dateComponent.day = 0; dateComponent.month = 0; bill.nextDueDate = Calendar.current.date(byAdding: dateComponent, to: bill.nextDueDate)!; return bill.nextDueDate;
         case .quarterly: dateComponent.year = 0; dateComponent.day = 0; dateComponent.month = 3; bill.nextDueDate = Calendar.current.date(byAdding: dateComponent, to: bill.nextDueDate)!; return bill.nextDueDate;
         case .monthly: dateComponent.year = 0; dateComponent.day = 0; dateComponent.month = 1; bill.nextDueDate = Calendar.current.date(byAdding: dateComponent, to: bill.nextDueDate)!; return bill.nextDueDate;
@@ -44,7 +47,8 @@ func getNextPayDate(frequency: Frequency, income: Income) -> Date {
     var dateComponent = DateComponents()
     
     switch frequency {
-    case .annually: dateComponent.year = 1; dateComponent.day = 0; dateComponent.month = 0; income.nextPayDate = Calendar.current.date(byAdding: dateComponent, to: income.nextPayDate)!; return income.nextPayDate;
+        case .once: dateComponent.year = 0; dateComponent.day = 0; dateComponent.month = 0; income.nextPayDate = Calendar.current.date(byAdding: dateComponent, to: income.nextPayDate)!; return income.nextPayDate;
+        case .annually: dateComponent.year = 1; dateComponent.day = 0; dateComponent.month = 0; income.nextPayDate = Calendar.current.date(byAdding: dateComponent, to: income.nextPayDate)!; return income.nextPayDate;
         case .quarterly: dateComponent.year = 0; dateComponent.day = 0; dateComponent.month = 3; income.nextPayDate = Calendar.current.date(byAdding: dateComponent, to: income.nextPayDate)!; return income.nextPayDate;
         case .monthly: dateComponent.year = 0; dateComponent.day = 0; dateComponent.month = 1; income.nextPayDate = Calendar.current.date(byAdding: dateComponent, to: income.nextPayDate)!; return income.nextPayDate;
         case .everyFourWeeks: dateComponent.year = 0; dateComponent.day = 28; dateComponent.month = 0; income.nextPayDate = Calendar.current.date(byAdding: dateComponent, to: income.nextPayDate)!; return income.nextPayDate;

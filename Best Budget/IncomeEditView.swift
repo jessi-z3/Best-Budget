@@ -16,7 +16,8 @@ struct IncomeEditView: View {
     @State private var outstanding: Double = 0.00
     @State var frequency: Frequency = .weekly
     @State var saved: Bool = false
-
+    @Binding var setupComplete: Bool
+    @Binding var projected : Double
     var income: Income
     var body: some View {
         NavigationStack{
@@ -89,6 +90,11 @@ struct IncomeEditView: View {
                                 income.incomeName = incomeName
                                 try viewContext.save()
                                 saved = true
+                                setupComplete = true
+                                
+                                projected += income.balance
+                                projected -= income.outstanding
+                                
                             } catch {
                                 saved = false
                                 let nsError = error as NSError

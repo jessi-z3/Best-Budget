@@ -9,6 +9,10 @@ import SwiftUI
 
 struct BillEditView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Income.nextPayDate, ascending: true)],
+        animation: .default)
+    var incomes: FetchedResults<Income>
 
     var bill: Bill
     @State var company = ""
@@ -17,6 +21,7 @@ struct BillEditView: View {
     @State var amount = 0.00
     @State var frequency: Frequency = .monthly
     @State var saved: Bool = false
+    @Binding var projected: Double
 
     var body: some View {
         NavigationStack{
@@ -75,6 +80,9 @@ struct BillEditView: View {
                         print(bill)
                         try viewContext.save()
                         saved = true
+                        if bill.nextDueDate < incomes[0].nextPayDate{
+                            projected -= bill.amount
+                        }
                     } catch {
                         saved = false
                         let nsError = error as NSError
