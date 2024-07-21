@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Frequency: String, CaseIterable, Identifiable {
+public enum Frequency: String, CaseIterable, Identifiable, Codable {
     public var id: Self { self }
 
     case annually = "annually"
@@ -17,6 +17,7 @@ public enum Frequency: String, CaseIterable, Identifiable {
     case biWeekly = "bi-weekly"
     case weekly = "weekly"
 }
+
 func getNextDueDate(frequency: Frequency, bill: Bill) -> Date {
     
     switch frequency {
@@ -28,6 +29,7 @@ func getNextDueDate(frequency: Frequency, bill: Bill) -> Date {
         case .weekly: bill.nextDueDate += (7 * 86400); return bill.nextDueDate;
     }
 }
+
 func getNextPayDate(frequency: Frequency, income: Income) -> Date {
     
     switch frequency {
@@ -39,3 +41,4 @@ func getNextPayDate(frequency: Frequency, income: Income) -> Date {
         case .weekly: income.nextPayDate += (7 * 86400); return income.nextPayDate;
     }
 }
+

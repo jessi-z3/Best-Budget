@@ -7,24 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC1F8A222A44EB050097F921 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F8A212A44EB050097F921 /* Setup.swift */; };
-		CC3B0E942A44CA56008BF223 /* Income+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3B0E922A44CA56008BF223 /* Income+CoreDataClass.swift */; };
-		CC3B0E952A44CA56008BF223 /* Income+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3B0E932A44CA56008BF223 /* Income+CoreDataProperties.swift */; };
+		CC1F8A222A44EB050097F921 /* IncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F8A212A44EB050097F921 /* IncomesView.swift */; };
 		CC4ADA782A41068000017F88 /* Best_BudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA772A41068000017F88 /* Best_BudgetApp.swift */; };
-		CC4ADA7A2A41068000017F88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA792A41068000017F88 /* ContentView.swift */; };
+		CC4ADA7A2A41068000017F88 /* BillsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA792A41068000017F88 /* BillsView.swift */; };
 		CC4ADA7C2A41068100017F88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4ADA7B2A41068100017F88 /* Assets.xcassets */; };
 		CC4ADA7F2A41068100017F88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4ADA7E2A41068100017F88 /* Preview Assets.xcassets */; };
-		CC4ADA812A41068100017F88 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA802A41068100017F88 /* Persistence.swift */; };
-		CC4ADA842A41068100017F88 /* Best_Budget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA822A41068100017F88 /* Best_Budget.xcdatamodeld */; };
 		CC4ADA8E2A41068100017F88 /* Best_BudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA8D2A41068100017F88 /* Best_BudgetTests.swift */; };
 		CC4ADA982A41068200017F88 /* Best_BudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA972A41068200017F88 /* Best_BudgetUITests.swift */; };
 		CC4ADA9A2A41068200017F88 /* Best_BudgetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADA992A41068200017F88 /* Best_BudgetUITestsLaunchTests.swift */; };
 		CC4ADAAB2A4109A200017F88 /* BillEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4ADAAA2A4109A200017F88 /* BillEditView.swift */; };
+		CC63CA832C40AEDD00E63432 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC63CA812C40AEDD00E63432 /* Bill.swift */; };
+		CC63CA842C40AEDD00E63432 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC63CA822C40AEDD00E63432 /* Income.swift */; };
+		CC63CA862C4108DE00E63432 /* IncomeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC63CA852C4108DE00E63432 /* IncomeEditView.swift */; };
 		CC65F3C42A4298F300E8A21D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC65F3C32A4298F300E8A21D /* MainView.swift */; };
 		CC721A0E2A436DB30037A1C8 /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC721A0D2A436DB30037A1C8 /* Overview.swift */; };
 		CCB4CDC22A4226370044005D /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4CDC12A4226370044005D /* Frequency.swift */; };
-		CCEF31FA2A44997400C8C44D /* Bill+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */; };
-		CCEF32012A449A4A00C8C44D /* Bill+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,27 +42,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC1F8A212A44EB050097F921 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
-		CC3B0E922A44CA56008BF223 /* Income+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Income+CoreDataClass.swift"; path = "Best Budget/Income+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CC3B0E932A44CA56008BF223 /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Income+CoreDataProperties.swift"; path = "Best Budget/Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CC0D4BFA2C4C9A1100B902ED /* Best Budget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Best Budget.entitlements"; sourceTree = "<group>"; };
+		CC0D4BFB2C4C9B2A00B902ED /* Best-Budget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Best-Budget-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CC1F8A212A44EB050097F921 /* IncomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesView.swift; sourceTree = "<group>"; };
 		CC4ADA742A41068000017F88 /* Best Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Best Budget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4ADA772A41068000017F88 /* Best_BudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_BudgetApp.swift; sourceTree = "<group>"; };
-		CC4ADA792A41068000017F88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CC4ADA792A41068000017F88 /* BillsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsView.swift; sourceTree = "<group>"; };
 		CC4ADA7B2A41068100017F88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC4ADA7E2A41068100017F88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CC4ADA802A41068100017F88 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		CC4ADA832A41068100017F88 /* Best_Budget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Best_Budget.xcdatamodel; sourceTree = "<group>"; };
 		CC4ADA892A41068100017F88 /* Best BudgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Best BudgetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4ADA8D2A41068100017F88 /* Best_BudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_BudgetTests.swift; sourceTree = "<group>"; };
 		CC4ADA932A41068200017F88 /* Best BudgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Best BudgetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4ADA972A41068200017F88 /* Best_BudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_BudgetUITests.swift; sourceTree = "<group>"; };
 		CC4ADA992A41068200017F88 /* Best_BudgetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_BudgetUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CC4ADAAA2A4109A200017F88 /* BillEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillEditView.swift; sourceTree = "<group>"; };
+		CC63CA812C40AEDD00E63432 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		CC63CA822C40AEDD00E63432 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		CC63CA852C4108DE00E63432 /* IncomeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeEditView.swift; sourceTree = "<group>"; };
 		CC65F3C32A4298F300E8A21D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CC721A0D2A436DB30037A1C8 /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 		CCB4CDC12A4226370044005D /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
-		CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bill+CoreDataClass.swift"; path = "Best Budget/Bill+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bill+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,14 +89,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC0D4BFC2C4CC70B00B902ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC63CA812C40AEDD00E63432 /* Bill.swift */,
+				CC63CA822C40AEDD00E63432 /* Income.swift */,
+				CCB4CDC12A4226370044005D /* Frequency.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC0D4BFD2C4CC73E00B902ED /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				CC721A0D2A436DB30037A1C8 /* Overview.swift */,
+				CC4ADA792A41068000017F88 /* BillsView.swift */,
+				CC1F8A212A44EB050097F921 /* IncomesView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		CC0D4BFE2C4CC75000B902ED /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				CC4ADAAA2A4109A200017F88 /* BillEditView.swift */,
+				CC63CA852C4108DE00E63432 /* IncomeEditView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		CC4ADA6B2A41067F00017F88 = {
 			isa = PBXGroup;
 			children = (
-				CC3B0E922A44CA56008BF223 /* Income+CoreDataClass.swift */,
-				CC3B0E932A44CA56008BF223 /* Income+CoreDataProperties.swift */,
-				CCEF31F82A44997400C8C44D /* Bill+CoreDataClass.swift */,
-				CCEF32002A449A4A00C8C44D /* Bill+CoreDataProperties.swift */,
-				CC65F3C32A4298F300E8A21D /* MainView.swift */,
 				CC4ADA762A41068000017F88 /* Best Budget */,
 				CC4ADA8C2A41068100017F88 /* Best BudgetTests */,
 				CC4ADA962A41068200017F88 /* Best BudgetUITests */,
@@ -121,16 +141,15 @@
 		CC4ADA762A41068000017F88 /* Best Budget */ = {
 			isa = PBXGroup;
 			children = (
+				CC0D4BFB2C4C9B2A00B902ED /* Best-Budget-Info.plist */,
+				CC0D4BFA2C4C9A1100B902ED /* Best Budget.entitlements */,
+				CC0D4BFC2C4CC70B00B902ED /* Models */,
+				CC65F3C32A4298F300E8A21D /* MainView.swift */,
+				CC0D4BFD2C4CC73E00B902ED /* Tabs */,
+				CC0D4BFE2C4CC75000B902ED /* Subviews */,
 				CC4ADA772A41068000017F88 /* Best_BudgetApp.swift */,
-				CC4ADA792A41068000017F88 /* ContentView.swift */,
-				CC1F8A212A44EB050097F921 /* Setup.swift */,
 				CC4ADA7B2A41068100017F88 /* Assets.xcassets */,
-				CC4ADA802A41068100017F88 /* Persistence.swift */,
-				CC4ADA822A41068100017F88 /* Best_Budget.xcdatamodeld */,
 				CC4ADA7D2A41068100017F88 /* Preview Content */,
-				CC4ADAAA2A4109A200017F88 /* BillEditView.swift */,
-				CCB4CDC12A4226370044005D /* Frequency.swift */,
-				CC721A0D2A436DB30037A1C8 /* Overview.swift */,
 			);
 			path = "Best Budget";
 			sourceTree = "<group>";
@@ -224,7 +243,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					CC4ADA732A41068000017F88 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -290,18 +309,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC3B0E952A44CA56008BF223 /* Income+CoreDataProperties.swift in Sources */,
 				CC721A0E2A436DB30037A1C8 /* Overview.swift in Sources */,
 				CC65F3C42A4298F300E8A21D /* MainView.swift in Sources */,
-				CC4ADA842A41068100017F88 /* Best_Budget.xcdatamodeld in Sources */,
-				CC4ADA812A41068100017F88 /* Persistence.swift in Sources */,
 				CCB4CDC22A4226370044005D /* Frequency.swift in Sources */,
-				CC3B0E942A44CA56008BF223 /* Income+CoreDataClass.swift in Sources */,
-				CCEF32012A449A4A00C8C44D /* Bill+CoreDataProperties.swift in Sources */,
+				CC63CA832C40AEDD00E63432 /* Bill.swift in Sources */,
+				CC63CA862C4108DE00E63432 /* IncomeEditView.swift in Sources */,
+				CC63CA842C40AEDD00E63432 /* Income.swift in Sources */,
 				CC4ADAAB2A4109A200017F88 /* BillEditView.swift in Sources */,
-				CCEF31FA2A44997400C8C44D /* Bill+CoreDataClass.swift in Sources */,
-				CC1F8A222A44EB050097F921 /* Setup.swift in Sources */,
-				CC4ADA7A2A41068000017F88 /* ContentView.swift in Sources */,
+				CC1F8A222A44EB050097F921 /* IncomesView.swift in Sources */,
+				CC4ADA7A2A41068000017F88 /* BillsView.swift in Sources */,
 				CC4ADA782A41068000017F88 /* Best_BudgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -404,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -460,12 +478,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Best Budget/Best Budget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Best Budget/Preview Content\"";
-				DEVELOPMENT_TEAM = AG7M436GF7;
+				DEVELOPMENT_TEAM = 78BT83L3M7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Best-Budget-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Best Budget";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -478,8 +498,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "YellowBird.Best-Budget";
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Apple.BestBudgetByJessi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -496,12 +516,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Best Budget/Best Budget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Best Budget/Preview Content\"";
-				DEVELOPMENT_TEAM = AG7M436GF7;
+				DEVELOPMENT_TEAM = 78BT83L3M7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Best-Budget-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Best Budget";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -514,8 +536,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "YellowBird.Best-Budget";
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Apple.BestBudgetByJessi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -643,19 +665,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CC4ADA822A41068100017F88 /* Best_Budget.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CC4ADA832A41068100017F88 /* Best_Budget.xcdatamodel */,
-			);
-			currentVersion = CC4ADA832A41068100017F88 /* Best_Budget.xcdatamodel */;
-			path = Best_Budget.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CC4ADA6C2A41067F00017F88 /* Project object */;
 }

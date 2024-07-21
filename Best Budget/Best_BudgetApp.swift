@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Best_BudgetApp: App {
-    let persistenceController = PersistenceController.shared
-
+    let modelContainer: ModelContainer
+        
+        init() {
+            do {
+                modelContainer = try ModelContainer(for: Income.self, Bill.self)
+            } catch {
+                fatalError("Could not initialize ModelContainer")
+            }
+        }
     var body: some Scene {
         WindowGroup {
-            Setup()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            MainView()
+                .modelContainer(modelContainer)
         }
     }
 }

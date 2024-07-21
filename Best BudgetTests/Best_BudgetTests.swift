@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import Best_Budget
 
 final class Best_BudgetTests: XCTestCase {
 
